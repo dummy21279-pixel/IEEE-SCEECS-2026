@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import ScrollNavigationMenu from './components/scroll-navigation-menu'
 import { Footer } from './components/ui/footer'
 import Home from './pages/Home'
@@ -58,6 +59,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
+      <Analytics />
     </div>
   )
 }
