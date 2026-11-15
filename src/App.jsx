@@ -10,6 +10,7 @@ import CallForPaper from './pages/CallForPaper'
 import GuestLecturers from './pages/GuestLecturers'
 import Gallery from './pages/Gallery'
 import Test from './pages/Test'
+import MetaReviewers from './pages/MetaReviewers'
 
 function ScrollToHashElement() {
   const { pathname, hash } = useLocation();
@@ -56,6 +57,8 @@ function App() {
           <Route path="/guestlecturers" element={<GuestLecturers />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/meta-reviewers" element={<MetaReviewers />} />
+          <Route path="/reviewers" element={<MetaReviewers />} />
         </Routes>
       </div>
       <Footer />
