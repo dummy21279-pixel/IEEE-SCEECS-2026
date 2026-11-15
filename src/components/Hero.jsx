@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Hero = ({ src, alt = "Hero Image", content, dates, buttonContent }) => {
     return (
         <div className='w-full bg-[#090822] relative'>
-            <div className='relative w-full overflow-hidden flex flex-col justify-center min-h-[340px] sm:min-h-[380px] md:min-h-[520px] md:h-[80vh] lg:h-[85vh] xl:h-[90vh] pt-24 pb-14 sm:pt-28 sm:pb-16 md:pt-24 md:pb-12'>
+            <div className='relative w-full overflow-hidden flex flex-col justify-center min-h-[380px] sm:min-h-[440px] md:min-h-[500px] lg:min-h-[560px] pt-24 sm:pt-28 md:pt-32 pb-24 sm:pb-28 md:pb-36 lg:pb-40'>
                 {/* Background Image - absolute inset-0 guarantees full coverage with no seams or cutoffs */}
                 <img
                     src={src}
@@ -25,19 +26,38 @@ const Hero = ({ src, alt = "Hero Image", content, dates, buttonContent }) => {
                             </div>
                         )}
                         {buttonContent && Array.isArray(buttonContent) && buttonContent.length > 0 && (
-                            <div className='flex flex-wrap gap-2 sm:gap-3 md:gap-4 mt-3 sm:mt-5 md:mt-8 max-w-full'>
-                                {buttonContent.map((button, index) => (
-                                    <a
-                                        key={index}
-                                        href={button.link}
-                                        target={button.link.startsWith('http') ? '_blank' : '_self'}
-                                        rel={button.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                        download={button.download || (button.link && (button.link.endsWith('.docx') || button.link.endsWith('.pdf')) ? true : undefined)}
-                                        className='inline-flex items-center justify-center px-3.5 py-2 sm:px-5 sm:py-2.5 md:px-8 md:py-3.5 text-xs sm:text-sm md:text-lg font-semibold text-white bg-pink-600 hover:bg-pink-700 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5'
-                                    >
-                                        {button.text}
-                                    </a>
-                                ))}
+                            <div className='flex flex-wrap gap-2.5 sm:gap-3.5 md:gap-4 mt-4 sm:mt-6 md:mt-8 max-w-full z-30'>
+                                {buttonContent.map((button, index) => {
+                                    const isFile = button.download || (button.link && (button.link.endsWith('.docx') || button.link.endsWith('.pdf') || button.link.endsWith('.png') || button.link.endsWith('.jpg')));
+                                    const isInternal = button.link && button.link.startsWith('/') && !isFile;
+                                    const defaultBtnClasses = 'inline-flex items-center justify-center px-3.5 py-2 sm:px-5 sm:py-2.5 md:px-8 md:py-3.5 text-xs sm:text-sm md:text-lg font-semibold text-white bg-pink-600 hover:bg-pink-700 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer';
+                                    const btnClasses = button.className || defaultBtnClasses;
+
+                                    if (isInternal) {
+                                        return (
+                                            <Link
+                                                key={index}
+                                                to={button.link}
+                                                className={btnClasses}
+                                            >
+                                                {button.text}
+                                            </Link>
+                                        );
+                                    }
+
+                                    return (
+                                        <a
+                                            key={index}
+                                            href={button.link}
+                                            target={button.link && button.link.startsWith('http') ? '_blank' : '_self'}
+                                            rel={button.link && button.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                            download={isFile ? true : undefined}
+                                            className={btnClasses}
+                                        >
+                                            {button.text}
+                                        </a>
+                                    );
+                                })}
                             </div>
                         )}
                     </div>
@@ -50,7 +70,7 @@ const Hero = ({ src, alt = "Hero Image", content, dates, buttonContent }) => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 1200 120"
                     preserveAspectRatio="none"
-                    className="relative block w-[calc(100%+1.3px)] h-[32px] sm:h-[60px] md:h-[100px] lg:h-[140px] xl:h-[160px] transform rotate-y-180"
+                    className="relative block w-[calc(100%+1.3px)] h-[32px] sm:h-[48px] md:h-[68px] lg:h-[84px] xl:h-[96px] transform rotate-y-180"
                     style={{ transform: 'rotate(180deg)' }}
                 >
                     <path

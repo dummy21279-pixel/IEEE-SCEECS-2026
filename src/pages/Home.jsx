@@ -3,6 +3,7 @@ import HowItWorkTimeline from "../components/Home/Timeline";
 import TracksAndTopics from "../components/Home/TracksAndTopics";
 import Gallery from "../components/Home/Gallery";
 import FeatureCards from "../components/Home/FeatureCards";
+import ReviewerCallout from "../components/Home/ReviewerCallout";
 import Sponsors from "../components/Home/Sponsors";
 import { StaggerTestimonials } from "../components/stagger-testimonials";
 import VideoShowcase from "../components/Home/VideoShowcase";
@@ -28,6 +29,10 @@ function Home() {
     text: "Conference details",
     link: "/docs/CALL FOR PAPER.png",
   },
+  {
+    text: "Apply for Meta Reviewers",
+    link: "/meta-reviewers",
+  },
 ];
   return (
     <div>
@@ -39,6 +44,7 @@ function Home() {
       <TracksAndTopics />
       <Gallery />
       <FeatureCards />
+      <ReviewerCallout />
       <GuestLectures />
       <Sponsors />
       <RegistrationFeeTable />

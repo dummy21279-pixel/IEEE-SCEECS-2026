@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, X, Home, User, FileText, Users, Image, Mail } from "lucide-react"
+import { Menu, X, Home, User, FileText, Users, Image, Mail, UserCheck } from "lucide-react"
 import { Link } from "react-router-dom"
 
 const defaultMenuItems = [
@@ -25,18 +25,24 @@ const defaultMenuItems = [
   },
   {
     id: 4,
+    title: "Reviewers",
+    url: "/meta-reviewers",
+    icon: <UserCheck className="w-5 h-5" />
+  },
+  {
+    id: 5,
     title: "Past Speakers",
     url: "/guestlecturers",
     icon: <Users className="w-5 h-5" />
   },
   {
-    id: 5,
+    id: 6,
     title: "Gallery",
     url: "/gallery",
     icon: <Image className="w-5 h-5" />
   },
   {
-    id: 6,
+    id: 7,
     title: "Contact",
     url: "/contact",
     icon: <Mail className="w-5 h-5" />
