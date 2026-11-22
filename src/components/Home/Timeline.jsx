@@ -8,22 +8,14 @@ const HowItWorkTimeline = ({ detailLink = "/callforpaper" }) => {
             date: "24 Oct 2026",
             content: (
                 <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-100 shadow-sm">
-                    <p className="text-gray-900 text-base sm:text-lg md:text-xl font-bold mb-3 leading-snug">
+                    <p className="text-gray-900 text-base sm:text-lg md:text-xl font-bold mb-2 leading-snug">
                         Official Call for Papers Released
                     </p>
-                    <a
-                        href="https://cmt3.research.microsoft.com/SCEECS2027"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 px-4 sm:px-5 rounded-lg transition-colors text-xs sm:text-sm mb-4"
-                    >
-                        Submit Now
-                    </a>
                     <p className="text-gray-800 font-semibold text-sm sm:text-base md:text-lg mb-1">
                         Acknowledgement
                     </p>
                     <p className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed">
-                        Deadline for full research manuscript submissions via Microsoft CMT (until 23:59 IST).
+                        The deadline to submit research manuscripts via Microsoft CMT has passed.
                     </p>
                 </div>
             ),
@@ -114,7 +106,7 @@ const HowItWorkTimeline = ({ detailLink = "/callforpaper" }) => {
         },
     ];
     return (
-        <section id="important-dates" className="w-full bg-white py-8 sm:py-12 px-3 sm:px-6 md:px-8 scroll-mt-20">
+        <section id="important-dates" className="w-full bg-white py-8 sm:py-12 px-3 sm:px-6 md:px-8 scroll-mt-20 overflow-hidden">
             <div className="max-w-7xl mx-auto text-center mb-6 sm:mb-8">
                 <p className="text-purple-600 text-xs sm:text-sm md:text-base font-semibold uppercase tracking-wider mb-2">
                     Schedule & Milestones

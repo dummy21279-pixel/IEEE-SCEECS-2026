@@ -123,11 +123,24 @@ function ScrollNavigationMenu({
       <motion.nav
         initial={{ y: 0, opacity: 1 }}
         animate={{
-          y: isScrolled ? -100 : 0,
+          y: isScrolled ? -140 : 0,
           opacity: isScrolled ? 0 : 1
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-md ${className}`}>
+        className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm ${className}`}>
+        
+        {/* Top Announcement Bar - matching the #090822 hero navy & pink theme */}
+        <div className="w-full bg-[#090822] text-white py-1.5 sm:py-2 px-3 sm:px-6 border-b border-white/10 text-xs sm:text-sm font-medium">
+          <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 sm:gap-3 text-center">
+            <span className="inline-block bg-pink-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+              Notice
+            </span>
+            <span className="text-gray-200 font-medium">
+              Paper Registration Closed for IEEE SCEECS 2027
+            </span>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}

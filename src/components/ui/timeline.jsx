@@ -12,11 +12,16 @@ export const Timeline = ({
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [ref]);
+    const updateHeight = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setHeight(rect.height);
+      }
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -28,7 +33,7 @@ export const Timeline = ({
 
   return (
     <div
-      className="w-full bg-white font-sans px-2 sm:px-4 md:px-10"
+      className="w-full bg-white font-sans px-2 sm:px-4 md:px-10 overflow-hidden"
       ref={containerRef}>
       <div className="max-w-7xl mx-auto pt-10 sm:pt-16 md:pt-20 pb-0 px-2 sm:px-6 md:px-8 lg:px-10">
         <div className="text-center mb-0">
@@ -44,7 +49,7 @@ export const Timeline = ({
         {data.map((item, index) => (
           <div key={index} className={`flex justify-start md:gap-10 ${index === 0 ? 'pt-0 md:pt-0' : 'pt-8 sm:pt-10 md:pt-40'}`}>
             <div
-              className="sticky flex flex-col md:flex-row z-40 items-center top-28 sm:top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+              className="sticky flex flex-col md:flex-row z-40 items-center top-28 sm:top-40 self-start md:w-72 lg:w-80 md:flex-shrink-0">
               <div
                 className="h-10 absolute left-1 sm:left-2 md:left-3 w-10 rounded-full bg-white flex items-center justify-center">
                 <div
@@ -62,7 +67,7 @@ export const Timeline = ({
               </div>
             </div>
 
-            <div className="relative pl-12 sm:pl-16 md:pl-4 pr-1 sm:pr-4 w-full">
+            <div className="relative pl-14 sm:pl-16 md:pl-0 pr-1 sm:pr-4 w-full md:flex-1 min-w-0">
               <div className="md:hidden block mb-3">
                 <h3 className="text-lg sm:text-2xl text-left font-bold text-gray-900 mb-1 leading-snug">
                   {item.title}
@@ -94,18 +99,6 @@ export const Timeline = ({
               opacity: opacityTransform,
             }}
             className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-purple-500 via-pink-500 to-transparent from-[0%] via-[10%] rounded-full" />
-        </div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10 pb-16 sm:pb-20">
-        <div className="flex justify-center">
-          <a
-            href="https://cmt3.research.microsoft.com/SCEECS2027"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-base sm:text-lg text-center"
-          >
-            Submit Now
-          </a>
         </div>
       </div>
     </div>
